@@ -1,0 +1,18 @@
+#! /usr/bin/expect -f 
+set timeout 60
+
+set password [lindex $argv 0]
+spawn ./sendFileWithScp.sh 
+
+expect "assword:"
+
+send "$password\r"
+
+expect  "100%"
+
+send "\r"
+interact
+
+
+
+
