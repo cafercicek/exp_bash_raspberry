@@ -44,7 +44,7 @@ int main() {
 	for(int i = 0; i < NUM_TIMES; i++){
 	 incre_value++; 
 	} 
-	doube average_count = (double) (ccnt_read() - tsc) /NUM_TIMES;
+	double average_count = (double) (ccnt_read() - tsc) /NUM_TIMES;
 
 	printf("Cyle average count on post increment:  %f \n", average_count);
 }
