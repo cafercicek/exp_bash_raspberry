@@ -2,14 +2,12 @@
 set timeout 60
 
 set password [lindex $argv 0]
-spawn ./runScriptWithSSHFirstPart.sh
+spawn ./runScriptWithSsh.sh
 
 expect "assword:"
 
 send "$password\r"
 
 interact
-
-
 
 
