@@ -3,7 +3,6 @@ Es gibt zwei Arten von Zeitinformationen in den heutigen Computern. Die eine ist
 Der Hardware-Timestamp zählt die Anzahl der internen Prozessortaktzyklen. Der Timestamp-Zähler ist eine spezielle Hardware-Ressource in einer CPU, auf die mit speziellen Befehlen zugegriffen werden kann. 
 
 
-
 Das physische Zählregister CNTPCT_EL0 des Zähler-Timers der ARM-CPU ist nur für den Supervisor zugänglich, während das virtuelle Zählregister CNTVCT_EL0 für den Benutzer zugänglich ist. Darüber hinaus können einige CPUs ihre CPU-Taktfrequenz ändern, um den Stromverbrauch zu senken, aber der interne Prozessortakt wird dadurch nicht beeinflusst, und der Counter-Timer bleibt monoton.
 
 
@@ -16,3 +15,12 @@ Der Zugriff auf die Leistungsüberwachungsregister erfolgt über Coprozessorregi
 Standardmäßig ist die Verwendung dieser Befehle nur im "privilegierten" Modus möglich. Der erste Schritt besteht darin, den Zugriff auf die Register vom Userspace aus zu ermöglichen. Dies kann durch ein einfaches Kernelmodul erreicht werden, das auch die notwendigen Parameter für den Cycle Counter setzen kann.
 
 Nach der Installation des Kernelmoduls können die Cycle Counter verwendet werden. (PMCCNTR, Performance Monitors Cycle Count Register, VMSA)
+
+$ #On Rapberry Pi
+$ make # build the kernel modul
+$ sudo insmod enable_ccr.ko # install the kernel modul image
+$ #Now Cycle Count Register Enable
+
+Zunächst fällt bei den GetPid-Tests auf, dass die Zyklenzahl verglichen mit x86 sehr hoch ist.
+
+
